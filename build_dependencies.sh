@@ -39,7 +39,15 @@ cd pe-parse
 sed -i -e 's/-Wno-strict-overflow/-Wno-strict-overflow -Wno-ignored-qualifiers/g' ./cmake/compilation_flags.cmake
 cmake ./CMakeLists.txt
 make -j
-cd ..
+mkdir build
+cd build
+
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build .
+
+# optional
+cmake --build . --target install
+cd ../..
 
 # Build SPII.
 cd spii
